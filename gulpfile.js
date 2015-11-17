@@ -4,13 +4,14 @@
 //载入插件
 var gulp = require('gulp');
 module.exports = gulp;
-var gulpPlugins = require('gulp-load-plugins')({
+/*var gulpPlugins = require('gulp-load-plugins')({
     rename: {'gulp-usemin-html': 'usemin'}
-});
-var pngquant = require('imagemin-pngquant');
-var Browsersync = require('browser-sync').create();
-var argv = require('minimist')(process.argv.slice(2));
-var reload = Browsersync.reload;
+});*/
+var concat = require('gulp-concat');
+//var pngquant = require('imagemin-pngquant');
+//var Browsersync = require('browser-sync').create();
+//var argv = require('minimist')(process.argv.slice(2));
+//var reload = Browsersync.reload;
 function timestamp() {//时间戳
     var date = new Date();
     var year = date.getFullYear();
@@ -33,14 +34,14 @@ function timestamp() {//时间戳
 /*====================================================创建任务=========================================================*/
 //JS校验
 gulp.task('hint', function () {
-    return gulp.src('./app/tmp/js/*.js')
+    return gulp.src('./src/*.js')
         .pipe(gulpPlugins.jshint());
 });
 //JS合并
 gulp.task('scripts', function () {
-    return gulp.src(['./app/tmp/js/To.js', './app/tmp/js/*.js', '!./app/tmp/js/mobile-pay*.js'])
-        .pipe(gulpPlugins.concat('mobile-pay.js'))
-        .pipe(gulp.dest('./app/tmp/js'));
+    return gulp.src(['src/W.js', 'src/*.js', '!src/wow*.js'])
+        .pipe(concat('wow.js'))
+        .pipe(gulp.dest('dist/'));
 });
 //CSS合并
 gulp.task('css', function () {
