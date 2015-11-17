@@ -1,5 +1,5 @@
 {
-  "name": "pay1.0.0",
+  "name": "wow1.0.0",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ying.xia@yeepay.com",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-add-src": "^0.2.0",

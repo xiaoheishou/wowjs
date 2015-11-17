@@ -58,14 +58,6 @@ gulp.task('scss', function () {
         .pipe(gulpPlugins.sass({outputStyle: 'expanded'}).on('error', gulpPlugins.sass.logError))
         .pipe(gulp.dest('./app/tmp/css'));
 });
-//图片版本管理
-gulp.task('revImg', function () {
-    return gulp.src(['./app/tmp/images/*', '!./app/tmp/images/*.json'])
-        .pipe(gulpPlugins.rev())
-        .pipe(gulp.dest('./app/tmp/images'))
-        .pipe(gulpPlugins.rev.manifest())
-        .pipe(gulp.dest('./app/tmp/images'));
-});
 //CSS版本管理
 gulp.task('revCss', ['cssBackup'], function () {
     return gulp.src(['./app/tmp/css/mobile-pay.css'])
@@ -112,50 +104,6 @@ gulp.task('imgmin', function () {
         }))
         .pipe(gulp.dest('./app/static/images'));
 });
-//发布前更新模板图片链接地址
-gulp.task('revCollImg', function () {
-    return gulp.src(['./app/tmp/images/*.json', './app/tpl/*.vm'])
-        .pipe(gulpPlugins.revCollector({
-            replaceReved: false,
-            dirReplacements: {
-                '/tmp/images/': '${ctx.contextPath}/static/images/'
-            }
-        }))
-        .pipe(gulp.dest('./app/tpl'));
-});
-//发布前更新模板CSS链接地址
-gulp.task('revCollCss', function () {
-    return gulp.src(['./app/tmp/css/*.json', './app/tpl/*.vm'])
-        .pipe(gulpPlugins.revCollector({
-            replaceReved: false,
-            dirReplacements: {
-                '/tmp/css/': '${ctx.contextPath}/static/css/'
-            }
-        }))
-        .pipe(gulp.dest('./app/tpl/'));
-});
-//发布前更新模板JS链接地址
-gulp.task('revCollJs', function () {
-    return gulp.src(['./app/tmp/js/*.json', './app/tpl/*.vm'])
-        .pipe(gulpPlugins.revCollector({
-            replaceReved: false,
-            dirReplacements: {
-                '/tmp/js/': '${ctx.contextPath}/static/js/'
-            }
-        }))
-        .pipe(gulp.dest('./app/tpl'));
-});
-//VM模板预览
-gulp.task('tpl', function () {
-    gulp.src(config.tpl_config.root + argv.env)
-        .pipe(gulpPlugins.velocity(config.tpl_config))
-        .pipe(gulpPlugins.rename({
-            suffix: "-vm",
-            extname: ".html"
-        }))
-        .pipe(gulp.dest(config.tmp_output));
-
-});
 //发布前替换为压缩版本
 gulp.task('usemin', function () {
     return gulp.src('./app/tpl/*.vm')
@@ -171,27 +119,7 @@ gulp.task('usemin', function () {
         }))
         .pipe(gulp.dest('./app/tpl/'));
 });
-//HTML转换VM
-gulp.task('copy', function () {
-    gulp.src('./app/tmp/*.html')
-        .pipe(gulpPlugins.contribCopy())
-        .pipe(gulpPlugins.rename({
-            extname: ".vm"
-        }))
-        .pipe(gulp.dest('./app/tpl/'))
-});
-//vm模板上传svn
-gulp.task('svnVm', function () {
-    gulp.src('./app/tpl/*.vm')
-        .pipe(gulpPlugins.contribCopy())
-        .pipe(gulp.dest('./app/svn/WEB-INF/views'))
-});
-gulp.task('static', function () {
-    gulp.src('./app/static/**/*')
-        .pipe(gulpPlugins.contribCopy())
-        .pipe(gulp.dest('./app/svn/static'))
-});
-gulp.task('svn', ['svnVm', 'static']);
+
 //iconfont复制到生产目录
 gulp.task('iconfont', function () {
     gulp.src('./app/tmp/iconfont/*')
@@ -226,10 +154,10 @@ gulp.task('replace', function () {
         .pipe(gulpPlugins.replace('\n', '{}'))
         .pipe(gulp.dest('./app/tmp/css/'));
 });
-//发布
-gulp.task('release', function () {
-    gulpPlugins.runSequence('revImg', 'revCss', 'revJs', 'cssmin', 'jsmin', 'imgmin', 'revCollImg', 'revCollCss', 'revCollJs', 'usemin');
-});
+/*//发布
+ gulp.task('release', function () {
+ gulpPlugins.runSequence('revImg', 'revCss', 'revJs', 'cssmin', 'jsmin', 'imgmin', 'revCollImg', 'revCollCss', 'revCollJs', 'usemin');
+ });*/
 //重载浏览器
 gulp.task('reload', ['css', 'scripts'], function () {
     Browsersync.init({
@@ -237,14 +165,7 @@ gulp.task('reload', ['css', 'scripts'], function () {
     });
     gulp.watch(['./app/tmp/css/*.css', './app/tmp/js/*.js', './app/tmp/**/*.html']).on('change', reload);
 });
-//导入模块
-gulp.task('fileinclude', function () {
-    gulp.src(['./app/tmp/*.html'])
-        .pipe(gulpPlugins.fileInclude({
-            prefix: '@'
-        }))
-        .pipe(gulp.dest('./app/tmp'));
-});
+
 //监听文件
 gulp.task('watchScss', function () {
     gulp.watch(['./app/scss/**/*.scss'], ['scss']);
@@ -255,10 +176,8 @@ gulp.task('watchCss', function () {
 gulp.task('watchJs', function () {
     gulp.watch(['./app/tmp/js/*.js'], ['scripts']);
 });
-gulp.task('watchVm', function () {
-    gulp.watch(['./app/tpl/*.vm'], ['tpl']);
-});
+
 gulp.task('watch', function () {
-    gulpPlugins.runSequence('watchScss', 'watchCss', 'watchJs', 'watchVm', 'reload');
+    gulpPlugins.runSequence('watchScss', 'watchCss', 'watchJs', 'reload');
 });
 
