@@ -156,6 +156,17 @@
         return this;
     }
 
+    _dom.prototype.forEach = function (fn) {
+        var i = this.length - 1;
+        for (; i >= 0; i--) {
+            fn.call(this[i], i, this[i]);
+        }
+    }
+    _dom.prototype.hide = function () {
+        this.forEach(function () {
+            this.style.display = "none";
+        });
+    }
     exports.fn.Dom = _dom;
 }();
 /*========================================================================*/
