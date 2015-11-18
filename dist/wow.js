@@ -1,7 +1,7 @@
 /*========================================================================*/
 +function () {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.11.11
      * description:命名空间，最顶层对象，W是唯一对外接口，继承exports
@@ -40,7 +40,7 @@
 /*========================================================================*/
 +function (exports) {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.10.20
      * plugName:ajax
@@ -118,7 +118,7 @@
 /*========================================================================*/
 +function () {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.10.12
      * plugName:clear
@@ -136,7 +136,7 @@
 /*========================================================================*/
 +function () {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.11.11
      * plugName:dom
@@ -172,7 +172,7 @@
 /*========================================================================*/
 +function () {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.11.09
      * plugName:format
@@ -214,7 +214,7 @@
 /*========================================================================*/
 +function () {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.11.09
      * plugName:keyboard
@@ -239,7 +239,7 @@
 /*========================================================================*/
 +function (exports) {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.10.20
      * plugName:loading
@@ -262,7 +262,7 @@
 /*========================================================================*/
 +function (exports) {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.10.26
      * plugName:popup
@@ -355,7 +355,7 @@
 /*========================================================================*/
 +function () {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.10.28
      * plugName:serialize
@@ -386,7 +386,7 @@
 /*========================================================================*/
 +function (exports) {
     /**
-     * author:ying.xia@yeepay.com
+     * author:wow_about@163.com
      * phone:13520114380
      * lastModifiedDate:2015.10.23
      * plugName:ui-errorMsg
