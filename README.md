@@ -1,4 +1,5 @@
 # wowjs
+## ![wow logo](img/wow-logo.png)
 * 名称：wow.js
 * 作者：小黑手
 * 开发状态：开发中
