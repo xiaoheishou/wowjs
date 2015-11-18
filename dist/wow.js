@@ -24,10 +24,10 @@
         var extend = extend || {};
         var coverride = typeof coverride == "undefined" ? false : coverride;
         if (coverride) {
-            this[name] = Object.create(extend);
+            this.__proto__[name] = Object.create(extend);
         } else {
             if (typeof this[name] == "undefined") {
-                this[name] = Object.create(extend);
+                this.__proto__[name] = Object.create(extend);
             } else {
                 console.error(name + "\u5BF9\u8C61\u521B\u5EFA\u5931\u8D25\uFF0C\u56E0\u4E3A\u5DF2\u7ECF\u5B58\u5728" + name + "\u5C5E\u6027\uFF0C" + name + "\u5C5E\u6027\u7C7B\u578B\u4E3A" + typeof this[name] + "\uFF0C" + "\u503C\u7B49\u4E8E" + this[name]);
             }

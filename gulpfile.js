@@ -175,7 +175,7 @@ gulp.task('watchCss', function () {
     gulp.watch(['./app/tmp/css/*.css'], ['css']);
 });
 gulp.task('watchJs', function () {
-    gulp.watch(['./app/tmp/js/*.js'], ['scripts']);
+    gulp.watch(['src/*.js'], ['scripts']);
 });
 
 gulp.task('watch', function () {
