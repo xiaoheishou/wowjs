@@ -7,11 +7,12 @@
 
 </head>
 <body>
+<div class="box"></div>
+<div class="box1"></div>
+<div class="box2"></div>
 <script src="dist/wow.js"></script>
 <script>
-    if (W.Dom("body")) {
-        alert("测试成功！git分支果然强大~");
-    }
+    W.Dom(".box").next().hide();
 </script>
 </body>
 </html>
