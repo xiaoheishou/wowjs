@@ -155,32 +155,36 @@
         return this.makeArray(domFactory);
     }
 
-    _dom.prototype.makeArray = function (array) {
-        this.length = 0;
-        Array.prototype.push.apply(this, array);
-        return this;
-    }
-    _dom.prototype.forEach = function (fn) {
-        var i = this.length - 1;
-        for (; i >= 0; i--) {
-            fn.call(this[i], i, this[i]);
+    _dom.prototype = {
+        constructor: _dom,
+        makeArray: function (array) {
+            this.length = 0;
+            Array.prototype.push.apply(this, array);
+            return this;
+        },
+        forEach: function (fn) {
+            var i = this.length - 1;
+            for (; i >= 0; i--) {
+                fn.call(this[i], i, this[i]);
+            }
+        },
+        hide: function () {
+            this.forEach(function () {
+                this.classList.toggle("w-hide");
+            });
+        },
+        next: function () {
+            var ret = [];
+            this.forEach(function () {
+                ret.push(this.nextElementSibling);
+            });
+            return this.makeArray(ret);
         }
-    }
 
-    _dom.prototype.hide = function () {
-        this.forEach(function () {
-            this.style.display = "none";
-        });
-    }
-    _dom.prototype.next = function () {
-        var ret = [];
-        this.forEach(function () {
-            ret.push(this.nextElementSibling);
-        });
-        return this.makeArray(ret);
     }
     exports.fn.Dom = _dom;
-}();
+}
+();
 /*========================================================================*/
 +function () {
     /**
