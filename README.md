@@ -6,6 +6,4 @@
 * 版本：v1.0.0
 * 描述：UI库
 * 邮箱：wow_contact@163.com
-* 兼容性：IE10+ 
-
-<p>W.Dom("body").hide()</p>
+* 兼容性：IE10+ 、Chrome40+、Firefox35+、Safari9+、opera30+

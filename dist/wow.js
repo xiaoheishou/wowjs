@@ -170,7 +170,7 @@
         },
         hide: function () {
             this.forEach(function () {
-                this.classList.toggle("w-hide");
+                this.style.display = "none";
             });
         },
         next: function () {
