@@ -5,8 +5,8 @@
 var gulp = require('gulp');
 module.exports = gulp;
 /*var gulpPlugins = require('gulp-load-plugins')({
-    rename: {'gulp-usemin-html': 'usemin'}
-});*/
+ rename: {'gulp-usemin-html': 'usemin'}
+ });*/
 var concat = require('gulp-concat');
 //var pngquant = require('imagemin-pngquant');
 //var Browsersync = require('browser-sync').create();
@@ -26,9 +26,8 @@ function timestamp() {//时间戳
         }
         if (n >= 0 && n < 10) {
             return "0" + n
-        } else {
-            return n;
         }
+        return n;
     }
 }
 /*====================================================创建任务=========================================================*/
